@@ -1,6 +1,6 @@
 #include "tcp_server.h"
 
-#include "led.h"
+#include "my_gpio.h"
 
 #include "lwip/tcp.h"
 #include "lwip/pbuf.h"
@@ -11,6 +11,7 @@
 #include "xil_printf.h"
 
 #include <string.h>
+#include <stdlib.h>
 
 #define TCP_SERVER_PORT 5000
 
@@ -22,6 +23,20 @@ static struct netif server_netif;
 static ip_addr_t ipaddr;
 static ip_addr_t netmask;
 static ip_addr_t gw;
+
+static inline int ip4_from_string(ip4_addr_t *ip, const char *str)
+{
+    unsigned a, b, c, d;
+
+    if (sscanf(str, "%u.%u.%u.%u", &a, &b, &c, &d) != 4)
+        return -1;
+
+    if (a > 255 || b > 255 || c > 255 || d > 255)
+        return -1;
+
+    IP4_ADDR(ip, a, b, c, d);
+    return 0;
+}
 
 static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
@@ -75,9 +90,13 @@ void tcp_server_init(void)
 
     struct tcp_pcb *pcb;
 
-    IP4_ADDR(&ipaddr,  172, 16,  15,  21);      /*172.16.15.21*/
-    IP4_ADDR(&netmask, 255, 255, 255, 0 );
-    IP4_ADDR(&gw,      172, 16 , 15 , 1 );
+    // IP4_ADDR(&ipaddr,  172, 16,  15,  21);      /*172.16.15.21*/
+    // IP4_ADDR(&netmask, 255, 255, 255, 0 );
+    // IP4_ADDR(&gw,      172, 16 , 15 , 1 );
+
+    ip4_from_string(&ipaddr,  LOCAL_IP);
+    ip4_from_string(&netmask, LOCAL_MASK);
+    ip4_from_string(&gw,       LOCAL_GW);
 
     lwip_init();
     netif=&server_netif;

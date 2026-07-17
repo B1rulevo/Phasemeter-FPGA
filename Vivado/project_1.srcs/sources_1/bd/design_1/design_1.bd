@@ -1492,16 +1492,16 @@
         "xci_name": "design_1_ila_0_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "4096"
+            "value": "16384"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "12"
+            "value": "5"
           },
           "C_PROBE0_WIDTH": {
-            "value": "32"
+            "value": "12"
           },
           "C_PROBE10_WIDTH": {
             "value": "1"
@@ -1510,16 +1510,16 @@
             "value": "1"
           },
           "C_PROBE1_WIDTH": {
-            "value": "32"
+            "value": "24"
           },
           "C_PROBE2_WIDTH": {
-            "value": "32"
+            "value": "24"
           },
           "C_PROBE3_WIDTH": {
             "value": "32"
           },
           "C_PROBE4_WIDTH": {
-            "value": "32"
+            "value": "14"
           },
           "C_PROBE5_WIDTH": {
             "value": "1"
@@ -1531,10 +1531,10 @@
             "value": "1"
           },
           "C_PROBE8_WIDTH": {
-            "value": "24"
+            "value": "1"
           },
           "C_PROBE9_WIDTH": {
-            "value": "14"
+            "value": "1"
           },
           "C_TRIGIN_EN": {
             "value": "false"
@@ -2965,14 +2965,14 @@
         "ports": [
           "adc_sample_0/adc_data_o",
           "mult_gen_I/A",
-          "mult_gen_Q/A"
+          "mult_gen_Q/A",
+          "ila_0/probe0"
         ]
       },
       "axi_dma_0_s2mm_introut": {
         "ports": [
           "axi_dma_0/s2mm_introut",
-          "processing_system7_0/IRQ_F2P",
-          "ila_0/probe11"
+          "processing_system7_0/IRQ_F2P"
         ]
       },
       "axis_capture_control_0_capture_enable": {
@@ -3067,7 +3067,6 @@
       "first_mux_Dout": {
         "ports": [
           "first_mux/Dout",
-          "ila_0/probe5",
           "trigger_mux_0/trigger_select"
         ]
       },
@@ -3094,11 +3093,7 @@
           "phase_unwrap_0/m_phase",
           "xlslice_sin2/Din",
           "cic_compiler_0/s_axis_data_tdata",
-          "ila_0/probe0",
-          "ila_0/probe1",
-          "ila_0/probe2",
-          "ila_0/probe3",
-          "ila_0/probe4"
+          "ila_0/probe3"
         ]
       },
       "phase_unwrap_0_m_valid": {
@@ -3156,7 +3151,6 @@
       "second_trig_Dout": {
         "ports": [
           "second_trig/Dout",
-          "ila_0/probe6",
           "trigger_mux_0/sw_trigger"
         ]
       },
@@ -3169,8 +3163,6 @@
       "trigger_mux_0_trigger_pulse": {
         "ports": [
           "trigger_mux_0/trigger_pulse",
-          "ila_0/probe7",
-          "ila_0/probe10",
           "axis_capture_control_0/trigger_async"
         ]
       },
@@ -3178,7 +3170,7 @@
         "ports": [
           "xlslice_sin2/Dout",
           "dac_data_o_0",
-          "ila_0/probe9"
+          "ila_0/probe4"
         ]
       },
       "xlconcat_0_dout": {
@@ -3258,7 +3250,6 @@
       "xlslice_0_Dout1": {
         "ports": [
           "cordic_0/m_axis_dout_tdata",
-          "ila_0/probe8",
           "mult_gen_0/A"
         ]
       },
@@ -3277,13 +3268,15 @@
       "xlslice_cos1_Dout": {
         "ports": [
           "fir_compiler_Q/m_axis_data_tdata",
-          "xlconcat_3/In0"
+          "xlconcat_3/In0",
+          "ila_0/probe2"
         ]
       },
       "xlslice_cos2_Dout": {
         "ports": [
           "fir_compiler_I/m_axis_data_tdata",
-          "xlconcat_3/In1"
+          "xlconcat_3/In1",
+          "ila_0/probe1"
         ]
       }
     },

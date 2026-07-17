@@ -14,19 +14,12 @@
 #include "xil_printf.h"
 #include "xil_cache.h"
 #include "xparameters.h"
+#include <xil_types.h>
+#include <xstatus.h>
 
 // #include "main.h"
 
 /* Настройте эти макросы под вашу платформу (см. таблицу ниже) */
-#ifndef DMA_DEV_ID
-  #ifdef XPAR_AXIDMA_0_DEVICE_ID
-    #define DMA_DEV_ID       XPAR_AXIDMA_0_DEVICE_ID
-  #else
-    #warning "DMA device ID not defined. Set DMA_DEV_ID macro accordingly."
-    #define DMA_DEV_ID       0
-  #endif
-#endif
-
 #ifndef DMA_S2MM_INT_ID
     #ifdef XPAR_FABRIC_AXI_DMA_0_INTR
         #define DMA_S2MM_INT_ID XPAR_FABRIC_AXI_DMA_0_INTR
@@ -54,9 +47,7 @@
 static XAxiDma   AxiDma;
 static XScuGic   GicInst;
 
-/* Флаги состояния */
-static volatile int DmaDone  = 0;
-static volatile int DmaError = 0;
+volatile dma_state_t dma_state = DMA_IDLE;
 
 /**
  * Инициализирует AXI DMA и настраивает прерывание S2MM.
@@ -70,9 +61,10 @@ int dma_init(void)
     int Status;
 
     /* Получить конфигурацию DMA */
-    Config = XAxiDma_LookupConfig(DMA_DEV_ID);
+    Config = XAxiDma_LookupConfig(DMA_INSTANCE);
     if (Config == NULL) {
         xil_printf("AXI DMA lookup failed\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }
 
@@ -80,12 +72,14 @@ int dma_init(void)
     Status = XAxiDma_CfgInitialize(&AxiDma, Config);
     if (Status != XST_SUCCESS) {
         xil_printf("AXI DMA init failed\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }
 
     /* Проверить, что DMA в Simple Mode */
     if (XAxiDma_HasSg(&AxiDma)) {
         xil_printf("DMA configured in SG mode\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }
 
@@ -106,6 +100,7 @@ int dma_init(void)
     GicConfig = XScuGic_LookupConfig(XPAR_XSCUGIC_0_BASEADDR);
     if (GicConfig == NULL) {
         xil_printf("GIC lookup failed\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }
 
@@ -113,6 +108,7 @@ int dma_init(void)
     
     if (Status != XST_SUCCESS) {
         xil_printf("GIC init failed\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }
 
@@ -121,14 +117,9 @@ int dma_init(void)
 
     if (Status != XST_SUCCESS) {
         xil_printf("DMA IRQ connect failed\r\n");
+        dma_state = DMA_ERROR;
         return XST_FAILURE;
     }    
-
-    xil_printf("Handler = %08X\r\n",
-    (UINTPTR)GicInst.Config->HandlerTable[DMA_GIC_INTR_ID].Handler);
-
-    xil_printf("dma_irq_handler = %08X\r\n",
-    (UINTPTR)dma_irq_handler);
 
     XScuGic_SetPriorityTriggerType(&GicInst, DMA_GIC_INTR_ID, 0xA0, 0x1);
 
@@ -143,9 +134,7 @@ int dma_init(void)
 
     xil_printf("DMA initialized\r\n");
 
-    u32 cpsr;
-    asm volatile ("mrs %0, cpsr" : "=r"(cpsr));
-    xil_printf("CPSR = %08X\r\n", cpsr);
+    dma_state = DMA_IDLE;
 
     return XST_SUCCESS;
 }
@@ -157,11 +146,15 @@ int dma_init(void)
  */
 int dma_start(uint32_t *buffer, uint32_t length_words)
 {
+    if (dma_state != DMA_IDLE) {
+        xil_printf("DMA is not ready for start!\r\n");
+        return XST_FAILURE;
+    }
+
+    dma_state = DMA_BUSY;
+
     /* Сброс кэша перед записью в память DMA */
     Xil_DCacheFlushRange((UINTPTR)buffer, length_words * sizeof(uint32_t));
-
-    /* Сбросить флаги состояния */
-    dma_clear_flags();
 
     /* Запустить простую передачу (S2MM) */
     int status = XAxiDma_SimpleTransfer(&AxiDma, (UINTPTR)buffer,
@@ -188,16 +181,10 @@ int dma_wait(void)
         if (--timeout == 0)
         {
             xil_printf("TIMEOUT\r\n");
-
-            u32 sr = XAxiDma_ReadReg(
-                AxiDma.RegBase,
-                XAXIDMA_RX_OFFSET + XAXIDMA_SR_OFFSET);
-
-            xil_printf("S2MM_DMASR = %08X\r\n", sr);
-
             return XST_FAILURE;
         }
     }
+    return XST_SUCCESS;
 }
 
 /**
@@ -219,46 +206,33 @@ void dma_irq_handler(void *Callback)
     /* Ошибка DMA (internal/slave/decode) */
     if (IrqStatus & XAXIDMA_IRQ_ERROR_MASK) {
         xil_printf("DMA error interrupt (0x%08x)\r\n", IrqStatus);
-        DmaError = 1;
         /* Попытка сброса DMA */
         XAxiDma_Reset(&AxiDma);
         int timeout = DMA_RESET_TIMEOUT;
         while (timeout--) {
             if (XAxiDma_ResetIsDone(&AxiDma)) break;
         }
+        dma_state = DMA_ERROR;
         return;
     }
 
     /* Завершение передачи (IOC — interrupt on complete) */
     if (IrqStatus & XAXIDMA_IRQ_IOC_MASK) {
         xil_printf("DMA IOC interrupt\r\n");
-        DmaDone = 1;
+        dma_state = DMA_DONE;
     }
 }
 
 /* Сбросить флаги DMA */
 void dma_clear_flags(void)
 {
-    DmaDone  = 0;
-    DmaError = 0;
+    dma_state = DMA_IDLE;
 }
 
 /* Проверка флага завершения */
-int dma_is_done(void)
+int dma_get_state(void)
 {
-    return DmaDone;
-}
-
-/* Проверка флага ошибки */
-int dma_has_error(void)
-{
-    return DmaError;
-}
-
-/* Проверка занятости DMA */
-int dma_is_busy(void)
-{
-    return XAxiDma_Busy(&AxiDma, XAXIDMA_DEVICE_TO_DMA);
+    return dma_state;
 }
 
 /* Программный сброс DMA (Simple mode) */
@@ -272,6 +246,7 @@ int dma_reset(void)
         }
     }
     xil_printf("DMA reset timeout\r\n");
+    dma_state = DMA_IDLE;
     return XST_FAILURE;
 }
 
@@ -282,4 +257,22 @@ void dma_test(void)
 
     xil_printf("EN0   = %08X\r\n", en0);
     xil_printf("PEND0 = %08X\r\n", pend0);
+}
+
+void dma_handle_data(uint32_t *dma_buffer, uint32_t len)
+{
+    if (dma_state != DMA_DONE) {
+        xil_printf("DMA is not ready for handling data!\r\n");
+        return;        
+    }
+
+    Xil_DCacheInvalidateRange((UINTPTR) dma_buffer, len);
+
+    // Вывести первые 16 слов результата
+    xil_printf("Data[0..16]: ");
+    for (int i = 0; i < 16; i++)
+        xil_printf("%08X ", dma_buffer[i + 65565]);
+    xil_printf("\r\n");
+
+    dma_state = DMA_IDLE;
 }

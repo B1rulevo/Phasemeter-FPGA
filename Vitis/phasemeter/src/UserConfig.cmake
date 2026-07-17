@@ -28,10 +28,8 @@ set(USER_INCLUDE_DIRECTORIES
 )
 set(USER_COMPILE_SOURCES
 "dma_p.c"
-"led.c"
 "main.c"
-"soft_trig.c"
-"tcp_server.c"
+"my_gpio.c"
 )
 
 # -----------------------------------------

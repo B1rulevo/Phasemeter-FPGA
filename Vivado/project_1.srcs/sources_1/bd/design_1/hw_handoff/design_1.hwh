@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 16 14:15:53 2026" VIVADOVERSION="2024.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jul 17 14:17:48 2026" VIVADOVERSION="2024.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -291,6 +291,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="mult_gen_I" PORT="A"/>
             <CONNECTION INSTANCE="mult_gen_Q" PORT="A"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sample_count_o" RIGHT="0" SIGIS="undef"/>
@@ -1274,7 +1275,6 @@
         <PORT DIR="O" NAME="s2mm_introut" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_dma_0_s2mm_introut">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="IRQ_F2P"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s2mm_prmry_reset_out_n" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
@@ -2929,7 +2929,6 @@
         </PORT>
         <PORT DIR="O" LEFT="23" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="cordic_0_m_axis_dout_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe8"/>
             <CONNECTION INSTANCE="mult_gen_0" PORT="A"/>
           </CONNECTIONS>
         </PORT>
@@ -3373,6 +3372,7 @@
         <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_3" PORT="In1"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tvalid">
@@ -3601,6 +3601,7 @@
         <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_Q_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_3" PORT="In0"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef"/>
@@ -3676,7 +3677,6 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="first_mux_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe5"/>
             <CONNECTION INSTANCE="trigger_mux_0" PORT="trigger_select"/>
           </CONNECTIONS>
         </PORT>
@@ -3701,7 +3701,7 @@
         <PARAMETER NAME="C_CORE_MINOR_VER" VALUE="0"/>
         <PARAMETER NAME="C_CORE_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_CSE_DRV_VER" VALUE="2"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="4096"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
         <PARAMETER NAME="C_DDR_CLK_GEN" VALUE="0"/>
         <PARAMETER NAME="C_DIVCLK_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
@@ -3715,11 +3715,11 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="12"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="5"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="12"/>
         <PARAMETER NAME="C_PROBE1000_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1000_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE1000_WIDTH" VALUE="1"/>
@@ -4124,7 +4124,7 @@
         <PARAMETER NAME="C_PROBE19_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE200_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE200_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE200_WIDTH" VALUE="1"/>
@@ -4457,7 +4457,7 @@
         <PARAMETER NAME="C_PROBE29_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE2_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE2_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE2_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE2_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE300_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE300_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE300_WIDTH" VALUE="1"/>
@@ -5123,7 +5123,7 @@
         <PARAMETER NAME="C_PROBE49_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE4_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE4_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE4_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE4_WIDTH" VALUE="14"/>
         <PARAMETER NAME="C_PROBE500_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE500_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE500_WIDTH" VALUE="1"/>
@@ -6455,7 +6455,7 @@
         <PARAMETER NAME="C_PROBE89_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE8_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE8_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE8_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_PROBE8_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE900_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE900_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE900_WIDTH" VALUE="1"/>
@@ -6788,10 +6788,10 @@
         <PARAMETER NAME="C_PROBE99_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE9_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE9_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE9_WIDTH" VALUE="14"/>
+        <PARAMETER NAME="C_PROBE9_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="1"/>
@@ -6828,19 +6828,19 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="ila_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe0" RIGHT="0" SIGIS="undef" SIGNAME="phase_unwrap_0_m_phase">
+        <PORT DIR="I" LEFT="11" NAME="probe0" RIGHT="0" SIGIS="undef" SIGNAME="adc_sample_0_adc_data_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="phase_unwrap_0" PORT="m_phase"/>
+            <CONNECTION INSTANCE="adc_sample_0" PORT="adc_data_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="phase_unwrap_0_m_phase">
+        <PORT DIR="I" LEFT="23" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="phase_unwrap_0" PORT="m_phase"/>
+            <CONNECTION INSTANCE="fir_compiler_I" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="phase_unwrap_0_m_phase">
+        <PORT DIR="I" LEFT="23" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_Q_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="phase_unwrap_0" PORT="m_phase"/>
+            <CONNECTION INSTANCE="fir_compiler_Q" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="probe3" RIGHT="0" SIGIS="undef" SIGNAME="phase_unwrap_0_m_phase">
@@ -6848,44 +6848,9 @@
             <CONNECTION INSTANCE="phase_unwrap_0" PORT="m_phase"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="phase_unwrap_0_m_phase">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="phase_unwrap_0" PORT="m_phase"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="first_mux_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="first_mux" PORT="Dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe6" RIGHT="0" SIGIS="undef" SIGNAME="second_trig_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="second_trig" PORT="Dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe7" RIGHT="0" SIGIS="undef" SIGNAME="trigger_mux_0_trigger_pulse">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="trigger_mux_0" PORT="trigger_pulse"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="23" NAME="probe8" RIGHT="0" SIGIS="undef" SIGNAME="cordic_0_m_axis_dout_tdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="cordic_0" PORT="m_axis_dout_tdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="13" NAME="probe9" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_sin2_Dout">
+        <PORT DIR="I" LEFT="13" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_sin2_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlslice_sin2" PORT="Dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe10" RIGHT="0" SIGIS="undef" SIGNAME="trigger_mux_0_trigger_pulse">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="trigger_mux_0" PORT="trigger_pulse"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe11" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s2mm_introut">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_dma_0" PORT="s2mm_introut"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7141,11 +7106,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlslice_sin2" PORT="Din"/>
             <CONNECTION INSTANCE="cic_compiler_0" PORT="s_axis_data_tdata"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_valid" SIGIS="undef" SIGNAME="phase_unwrap_0_m_valid">
@@ -9023,7 +8984,6 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="second_trig_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe6"/>
             <CONNECTION INSTANCE="trigger_mux_0" PORT="sw_trigger"/>
           </CONNECTIONS>
         </PORT>
@@ -9787,8 +9747,6 @@
         </PORT>
         <PORT DIR="O" NAME="trigger_pulse" SIGIS="undef" SIGNAME="trigger_mux_0_trigger_pulse">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe7"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
             <CONNECTION INSTANCE="axis_capture_control_0" PORT="trigger_async"/>
           </CONNECTIONS>
         </PORT>
@@ -10468,7 +10426,7 @@
         <PORT DIR="O" LEFT="13" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_sin2_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="dac_data_o_0"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe9"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

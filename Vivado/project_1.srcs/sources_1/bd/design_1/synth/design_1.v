@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-//Date        : Thu Jul 16 14:15:39 2026
+//Date        : Fri Jul 17 14:17:20 2026
 //Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -391,18 +391,11 @@ module design_1
         .Dout(first_mux_Dout));
   design_1_ila_0_0 ila_0
        (.clk(clk_wiz_0_ila_clk),
-        .probe0(phase_unwrap_0_m_phase),
-        .probe1(phase_unwrap_0_m_phase),
-        .probe10(trigger_mux_0_trigger_pulse),
-        .probe11(axi_dma_0_s2mm_introut),
-        .probe2(phase_unwrap_0_m_phase),
+        .probe0(adc_sample_0_adc_data_o),
+        .probe1(xlslice_cos2_Dout),
+        .probe2(xlslice_cos1_Dout),
         .probe3(phase_unwrap_0_m_phase),
-        .probe4(phase_unwrap_0_m_phase),
-        .probe5(first_mux_Dout),
-        .probe6(second_trig_Dout),
-        .probe7(trigger_mux_0_trigger_pulse),
-        .probe8(xlslice_0_Dout1),
-        .probe9(dac_data_o_0));
+        .probe4(dac_data_o_0));
   design_1_leds_0_0 leds_0
        (.clk_i(clk_in_0));
   design_1_mult_gen_0_2 mult_gen_0

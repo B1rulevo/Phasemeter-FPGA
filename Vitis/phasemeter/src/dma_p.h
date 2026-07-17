@@ -22,6 +22,15 @@
 
 #include <stdint.h>
 
+#define DMA_INSTANCE 0
+
+typedef enum {
+    DMA_IDLE = 0,
+    DMA_BUSY,
+    DMA_DONE,
+    DMA_ERROR
+} dma_state_t;
+
 /* Инициализировать DMA и прерывания (XScuGic) */
 int dma_init(void);
 
@@ -37,18 +46,14 @@ void dma_irq_handler(void *Callback);
 /* Сбросить флаги (вызвать перед началом новой передачи) */
 void dma_clear_flags(void);
 
-/* Проверить флаг завершения (1=завершено) */
-int dma_is_done(void);
-
-/* Проверить флаг ошибки (1=есть ошибка) */
-int dma_has_error(void);
-
-/* Проверить, занят ли DMA (1=занят) */
-int dma_is_busy(void);
+/* Проверка состояния DMA */
+int dma_get_state(void);
 
 /* Программный сброс DMA */
 int dma_reset(void);
 
 void dma_test(void);
+
+void dma_handle_data(uint32_t *dma_buffer, uint32_t len);
 
 #endif /* DMA_H */
