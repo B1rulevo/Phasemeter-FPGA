@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-// Date        : Tue Jul  7 16:02:00 2026
+// Date        : Fri Jul 17 15:46:41 2026
 // Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top design_1_clk_wiz_0_0 -prefix
-//               design_1_clk_wiz_0_0_ design_1_clk_wiz_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_stub.v
 // Design      : design_1_clk_wiz_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z010clg400-1

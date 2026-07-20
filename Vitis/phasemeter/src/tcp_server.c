@@ -1,6 +1,8 @@
 #include "tcp_server.h"
+#include "tcp_interface.h"
 
 #include "my_gpio.h"
+#include "main.h"
 
 #include "lwip/tcp.h"
 #include "lwip/pbuf.h"
@@ -13,7 +15,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define TCP_SERVER_PORT 5000
+extern PhasemeterState_t deviceState;
 
 static struct tcp_pcb *client_pcb = NULL;
 
@@ -45,6 +47,8 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
         tcp_close(tpcb);
         client_pcb = NULL;
         offLED();
+        deviceState = STATE_DISCONNECTED;
+        xil_printf("Device state changed to STATE_DISCONNECTED\r\n");
         return ERR_OK;
     }
 
@@ -53,9 +57,11 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
         return err;
     }
 
-    xil_printf("RX: %s\r\n", (char *)p->payload);
+    // xil_printf("RX: %s\r\n", (char *)p->payload);
 
-    tcp_write(tpcb, p->payload, p->len, TCP_WRITE_FLAG_COPY);
+    packetHandle((uint8_t *)p->payload, p->tot_len);
+
+    //tcp_write(tpcb, p->payload, p->len, TCP_WRITE_FLAG_COPY);
 
     tcp_output(tpcb);
 
@@ -64,14 +70,24 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
     return ERR_OK;
 }
 
-void tcp_server_send(char *msg)
+// void tcp_server_send(char *msg)
+// {
+//     if (client_pcb == NULL)
+//         return;
+
+//     tcp_write(client_pcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
+//     tcp_output(client_pcb);
+//     toggleLED();
+// }
+
+void tcp_server_send(const uint8_t *data, uint32_t len)
 {
-    if (client_pcb == NULL)
+    if(client_pcb == NULL)
         return;
 
-    tcp_write(client_pcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
+    tcp_write(client_pcb, data, len, TCP_WRITE_FLAG_COPY);
+
     tcp_output(client_pcb);
-    toggleLED();
 }
 
 static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
@@ -79,6 +95,10 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
     xil_printf("TCP client connected\r\n");
     client_pcb = newpcb;
 
+    if (deviceState == STATE_DISCONNECTED) {
+        deviceState = STATE_IDLE;
+        xil_printf("Device state changed to STATE_IDLE\r\n");
+    }
     tcp_recv(newpcb, tcp_server_recv);
 
     return ERR_OK;

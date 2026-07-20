@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jul 17 14:17:48 2026" VIVADOVERSION="2024.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jul 17 16:11:03 2026" VIVADOVERSION="2024.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -289,9 +289,9 @@
         </PORT>
         <PORT DIR="O" LEFT="11" NAME="adc_data_o" RIGHT="0" SIGIS="undef" SIGNAME="adc_sample_0_adc_data_o">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
             <CONNECTION INSTANCE="mult_gen_I" PORT="A"/>
             <CONNECTION INSTANCE="mult_gen_Q" PORT="A"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="sample_count_o" RIGHT="0" SIGIS="undef"/>
@@ -2289,10 +2289,10 @@
         <PARAMETER NAME="C_CLKOUT3_DUTY_CYCLE" VALUE="50.0"/>
         <PARAMETER NAME="C_CLKOUT3_MATCHED_ROUTING" VALUE="false"/>
         <PARAMETER NAME="C_CLKOUT3_OUT_FREQ" VALUE="48.07692"/>
-        <PARAMETER NAME="C_CLKOUT3_PHASE" VALUE="0.000"/>
+        <PARAMETER NAME="C_CLKOUT3_PHASE" VALUE="31.154"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_OUT_FREQ" VALUE="50"/>
-        <PARAMETER NAME="C_CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
+        <PARAMETER NAME="C_CLKOUT3_REQUESTED_PHASE" VALUE="30"/>
         <PARAMETER NAME="C_CLKOUT3_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT3_USED" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT4_1" VALUE="0000"/>
@@ -2419,7 +2419,7 @@
         <PARAMETER NAME="C_MMCM_CLKOUT1_USE_FINE_PS" VALUE="FALSE"/>
         <PARAMETER NAME="C_MMCM_CLKOUT2_DIVIDE" VALUE="13"/>
         <PARAMETER NAME="C_MMCM_CLKOUT2_DUTY_CYCLE" VALUE="0.500"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT2_PHASE" VALUE="0.000"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT2_PHASE" VALUE="31.154"/>
         <PARAMETER NAME="C_MMCM_CLKOUT2_USE_FINE_PS" VALUE="FALSE"/>
         <PARAMETER NAME="C_MMCM_CLKOUT3_DIVIDE" VALUE="125"/>
         <PARAMETER NAME="C_MMCM_CLKOUT3_DUTY_CYCLE" VALUE="0.500"/>
@@ -2453,7 +2453,7 @@
         <PARAMETER NAME="C_OUTCLK_SUM_ROW0B" VALUE="Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW1" VALUE="adc_clk_i__50.00000______0.000______50.0______706.970____883.386"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW2" VALUE="_ila_clk___5.00000______0.000______50.0_____1045.072____883.386"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW3" VALUE="adc_clk_o__48.07692______0.000______50.0______710.474____883.386"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW3" VALUE="adc_clk_o__48.07692_____31.154______50.0______710.474____883.386"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW4" VALUE="____lo_o___5.00000______0.000______50.0_____1045.072____883.386"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW5" VALUE="no_CLK_OUT5_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW6" VALUE="no_CLK_OUT6_output"/>
@@ -2596,7 +2596,7 @@
         <PARAMETER NAME="CLKOUT3_PHASE_ERROR" VALUE="883.386"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_OUT_FREQ" VALUE="50"/>
-        <PARAMETER NAME="CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
+        <PARAMETER NAME="CLKOUT3_REQUESTED_PHASE" VALUE="30"/>
         <PARAMETER NAME="CLKOUT3_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="CLKOUT3_USED" VALUE="true"/>
         <PARAMETER NAME="CLKOUT4_DRIVES" VALUE="BUFG"/>
@@ -2699,7 +2699,7 @@
         <PARAMETER NAME="MMCM_CLKOUT1_USE_FINE_PS" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLKOUT2_DIVIDE" VALUE="13"/>
         <PARAMETER NAME="MMCM_CLKOUT2_DUTY_CYCLE" VALUE="0.500"/>
-        <PARAMETER NAME="MMCM_CLKOUT2_PHASE" VALUE="0.000"/>
+        <PARAMETER NAME="MMCM_CLKOUT2_PHASE" VALUE="31.154"/>
         <PARAMETER NAME="MMCM_CLKOUT2_USE_FINE_PS" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLKOUT3_DIVIDE" VALUE="125"/>
         <PARAMETER NAME="MMCM_CLKOUT3_DUTY_CYCLE" VALUE="0.500"/>
@@ -2994,7 +2994,7 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=dds_compiler;v=v6_0;d=pg141-dds-compiler.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_ACCUMULATOR_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_ACCUMULATOR_WIDTH" VALUE="48"/>
         <PARAMETER NAME="C_AMPLITUDE" VALUE="0"/>
         <PARAMETER NAME="C_CHANNELS" VALUE="1"/>
         <PARAMETER NAME="C_CHAN_WIDTH" VALUE="1"/>
@@ -3018,7 +3018,7 @@
         <PARAMETER NAME="C_M_DATA_TDATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_M_DATA_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_M_PHASE_HAS_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_M_PHASE_TDATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_M_PHASE_TDATA_WIDTH" VALUE="48"/>
         <PARAMETER NAME="C_M_PHASE_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_NEGATIVE_COSINE" VALUE="0"/>
         <PARAMETER NAME="C_NEGATIVE_SINE" VALUE="0"/>
@@ -3030,7 +3030,7 @@
         <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="12"/>
         <PARAMETER NAME="C_PHASE_ANGLE_WIDTH" VALUE="12"/>
         <PARAMETER NAME="C_PHASE_INCREMENT" VALUE="2"/>
-        <PARAMETER NAME="C_PHASE_INCREMENT_VALUE" VALUE="00011001100110011001100110011010,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+        <PARAMETER NAME="C_PHASE_INCREMENT_VALUE" VALUE="000110011001100110011001100110011001100110011010,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
         <PARAMETER NAME="C_PHASE_OFFSET" VALUE="0"/>
         <PARAMETER NAME="C_PHASE_OFFSET_VALUE" VALUE="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
         <PARAMETER NAME="C_POR_MODE" VALUE="0"/>
@@ -3085,7 +3085,7 @@
         <PARAMETER NAME="Output_Selection" VALUE="Sine_and_Cosine"/>
         <PARAMETER NAME="Output_Type" VALUE="Integer"/>
         <PARAMETER NAME="Output_Width" VALUE="12"/>
-        <PARAMETER NAME="PINC1" VALUE="00011001100110011001100110011010"/>
+        <PARAMETER NAME="PINC1" VALUE="000110011001100110011001100110011001100110011010"/>
         <PARAMETER NAME="PINC2" VALUE="0"/>
         <PARAMETER NAME="PINC3" VALUE="0"/>
         <PARAMETER NAME="PINC4" VALUE="0"/>
@@ -3137,7 +3137,7 @@
         <PARAMETER NAME="Phase_Offset_Angles14" VALUE="0"/>
         <PARAMETER NAME="Phase_Offset_Angles15" VALUE="0"/>
         <PARAMETER NAME="Phase_Offset_Angles16" VALUE="0"/>
-        <PARAMETER NAME="Phase_Width" VALUE="32"/>
+        <PARAMETER NAME="Phase_Width" VALUE="48"/>
         <PARAMETER NAME="Phase_offset" VALUE="None"/>
         <PARAMETER NAME="Resync" VALUE="false"/>
         <PARAMETER NAME="S_CONFIG_Sync_Mode" VALUE="On_Vector"/>
@@ -3161,7 +3161,7 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="m_axis_phase_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="47" NAME="m_axis_phase_tdata" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_axis_phase_tvalid" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
@@ -3192,9 +3192,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_phase_out {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_out} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency phase_fractwidth format long minimum {} maximum {}} value 32} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 48} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_phase_out {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_out} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency phase_fractwidth format long minimum {} maximum {}} value 48} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -3371,8 +3371,8 @@
         </PORT>
         <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_3" PORT="In1"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tvalid">
@@ -3600,8 +3600,8 @@
         </PORT>
         <PORT DIR="O" LEFT="23" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_Q_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_3" PORT="In0"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef"/>
@@ -10196,14 +10196,14 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="23" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_Q_m_axis_data_tdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="fir_compiler_Q" PORT="m_axis_data_tdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="23" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="23" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_I_m_axis_data_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_compiler_I" PORT="m_axis_data_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="fir_compiler_Q_m_axis_data_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fir_compiler_Q" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_3_dout">
@@ -10410,8 +10410,8 @@
     <MODULE COREREVISION="4" FULLNAME="/xlslice_sin2" HWVERSION="1.0" INSTANCE="xlslice_sin2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_FROM" VALUE="24"/>
-        <PARAMETER NAME="DIN_TO" VALUE="11"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="23"/>
+        <PARAMETER NAME="DIN_TO" VALUE="10"/>
         <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_sin1_0"/>
         <PARAMETER NAME="DOUT_WIDTH" VALUE="14"/>

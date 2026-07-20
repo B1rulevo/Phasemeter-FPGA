@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-//Date        : Fri Jul 17 14:17:20 2026
+//Date        : Fri Jul 17 16:10:59 2026
 //Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -685,8 +685,8 @@ module design_1
         .In1({1'b0,1'b0,1'b0,1'b0}),
         .dout(xlconcat_1_dout));
   design_1_xlconcat_3_0 xlconcat_3
-       (.In0(xlslice_cos1_Dout),
-        .In1(xlslice_cos2_Dout),
+       (.In0(xlslice_cos2_Dout),
+        .In1(xlslice_cos1_Dout),
         .dout(xlconcat_3_dout));
   design_1_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));

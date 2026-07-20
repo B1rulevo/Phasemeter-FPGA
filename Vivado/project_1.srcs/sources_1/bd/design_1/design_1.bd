@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1196E6B760EB2AEF",
+      "boundary_crc": "0x1196E6B7FDED02A2",
       "device": "xc7z010clg400-1",
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -403,7 +403,7 @@
             "value_src": "ip_prop"
           },
           "PHASE": {
-            "value": "0.0",
+            "value": "30.0",
             "value_src": "ip_prop"
           }
         }
@@ -1579,6 +1579,9 @@
           "CLKOUT3_REQUESTED_OUT_FREQ": {
             "value": "50"
           },
+          "CLKOUT3_REQUESTED_PHASE": {
+            "value": "30"
+          },
           "CLKOUT3_USED": {
             "value": "true"
           },
@@ -1623,6 +1626,9 @@
           },
           "MMCM_CLKOUT2_DIVIDE": {
             "value": "13"
+          },
+          "MMCM_CLKOUT2_PHASE": {
+            "value": "31.154"
           },
           "MMCM_CLKOUT3_DIVIDE": {
             "value": "125"
@@ -1687,7 +1693,7 @@
             "value": "12"
           },
           "PINC1": {
-            "value": "00011001100110011001100110011010"
+            "value": "000110011001100110011001100110011001100110011010"
           },
           "Parameter_Entry": {
             "value": "Hardware_Parameters"
@@ -1696,7 +1702,7 @@
             "value": "Fixed"
           },
           "Phase_Width": {
-            "value": "32"
+            "value": "48"
           },
           "S_PHASE_Has_TUSER": {
             "value": "Not_Required"
@@ -2238,10 +2244,10 @@
         "xci_name": "design_1_xlslice_sin1_0",
         "parameters": {
           "DIN_FROM": {
-            "value": "24"
+            "value": "23"
           },
           "DIN_TO": {
-            "value": "11"
+            "value": "10"
           },
           "DIN_WIDTH": {
             "value": "32"
@@ -2964,9 +2970,9 @@
       "adc_sample_0_adc_data_o": {
         "ports": [
           "adc_sample_0/adc_data_o",
+          "ila_0/probe0",
           "mult_gen_I/A",
-          "mult_gen_Q/A",
-          "ila_0/probe0"
+          "mult_gen_Q/A"
         ]
       },
       "axi_dma_0_s2mm_introut": {
@@ -3268,15 +3274,15 @@
       "xlslice_cos1_Dout": {
         "ports": [
           "fir_compiler_Q/m_axis_data_tdata",
-          "xlconcat_3/In0",
-          "ila_0/probe2"
+          "ila_0/probe2",
+          "xlconcat_3/In1"
         ]
       },
       "xlslice_cos2_Dout": {
         "ports": [
           "fir_compiler_I/m_axis_data_tdata",
-          "xlconcat_3/In1",
-          "ila_0/probe1"
+          "ila_0/probe1",
+          "xlconcat_3/In0"
         ]
       }
     },

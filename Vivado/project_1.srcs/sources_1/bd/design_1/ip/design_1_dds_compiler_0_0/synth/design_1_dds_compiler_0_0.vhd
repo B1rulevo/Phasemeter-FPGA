@@ -62,7 +62,7 @@ ENTITY design_1_dds_compiler_0_0 IS
     m_axis_data_tvalid : OUT STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_phase_tvalid : OUT STD_LOGIC;
-    m_axis_phase_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    m_axis_phase_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0)
   );
 END design_1_dds_compiler_0_0;
 
@@ -140,7 +140,7 @@ ARCHITECTURE design_1_dds_compiler_0_0_arch OF design_1_dds_compiler_0_0 IS
       m_axis_data_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       m_axis_phase_tvalid : OUT STD_LOGIC;
       m_axis_phase_tready : IN STD_LOGIC;
-      m_axis_phase_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      m_axis_phase_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0);
       m_axis_phase_tlast : OUT STD_LOGIC;
       m_axis_phase_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       event_pinc_invalid : OUT STD_LOGIC;
@@ -158,9 +158,9 @@ ARCHITECTURE design_1_dds_compiler_0_0_arch OF design_1_dds_compiler_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_dds_compiler_0_0_arch : ARCHITECTURE IS "design_1_dds_compiler_0_0,dds_compiler_v6_0_26,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_dds_compiler_0_0_arch: ARCHITECTURE IS "design_1_dds_compiler_0_0,dds_compiler_v6_0_26,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dds_compiler,x_ipVersion=6.0,x_ipCoreRevision=26,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_MODE_OF_OPERATION=0,C_MODULUS=9,C_ACCUMULATOR_WIDTH=32,C_CHANNELS=1,C_HAS_PHASE_OUT=1,C_HAS_PHASEGEN=1,C_HAS_SINCOS=1,C_LATENCY=7,C_MEM_TYPE=1,C_NEGATIVE_COSINE=0,C_NEGATIVE_SINE=0,C_NOISE_SHAPING=0,C_OUTPUTS_REQUIRED=2,C_OUTPUT_FORM=0,C_OUTPUT_TYPE=0,C_OUTPUT_WIDT" & 
-"H=12,C_PHASE_ANGLE_WIDTH=12,C_PHASE_INCREMENT=2,C_PHASE_INCREMENT_VALUE=00011001100110011001100110011010_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0,C_RESYNC=0,C_PHASE_OFFSET=0,C_PHASE_OFFSET_VALUE=0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0,C_OPTIMISE_GOAL=0,C_USE_DSP48=0,C_POR_MODE=0,C_AMPLITUDE=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0,C_HAS_TLAST=0,C_HAS_TREADY=0,C_HAS_S_PHASE=0,C_S_PHASE_TDATA_WIDTH=1,C_S_PHASE_HAS_TUSER=0,C_S_PHASE_TUSER_WIDTH=1,C_HAS_S_CONFIG=0,C_S_CONFIG_SYNC_MODE=0,C_S_CONFIG_TDATA_WIDTH=1,C_HAS_M_DATA=1" & 
-",C_M_DATA_TDATA_WIDTH=32,C_M_DATA_HAS_TUSER=0,C_M_DATA_TUSER_WIDTH=1,C_HAS_M_PHASE=1,C_M_PHASE_TDATA_WIDTH=32,C_M_PHASE_HAS_TUSER=0,C_M_PHASE_TUSER_WIDTH=1,C_DEBUG_INTERFACE=0,C_CHAN_WIDTH=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_dds_compiler_0_0_arch: ARCHITECTURE IS "design_1_dds_compiler_0_0,dds_compiler_v6_0_26,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dds_compiler,x_ipVersion=6.0,x_ipCoreRevision=26,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_MODE_OF_OPERATION=0,C_MODULUS=9,C_ACCUMULATOR_WIDTH=48,C_CHANNELS=1,C_HAS_PHASE_OUT=1,C_HAS_PHASEGEN=1,C_HAS_SINCOS=1,C_LATENCY=7,C_MEM_TYPE=1,C_NEGATIVE_COSINE=0,C_NEGATIVE_SINE=0,C_NOISE_SHAPING=0,C_OUTPUTS_REQUIRED=2,C_OUTPUT_FORM=0,C_OUTPUT_TYPE=0,C_OUTPUT_WIDT" & 
+"H=12,C_PHASE_ANGLE_WIDTH=12,C_PHASE_INCREMENT=2,C_PHASE_INCREMENT_VALUE=000110011001100110011001100110011001100110011010_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0,C_RESYNC=0,C_PHASE_OFFSET=0,C_PHASE_OFFSET_VALUE=0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0,C_OPTIMISE_GOAL=0,C_USE_DSP48=0,C_POR_MODE=0,C_AMPLITUDE=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0,C_HAS_TLAST=0,C_HAS_TREADY=0,C_HAS_S_PHASE=0,C_S_PHASE_TDATA_WIDTH=1,C_S_PHASE_HAS_TUSER=0,C_S_PHASE_TUSER_WIDTH=1,C_HAS_S_CONFIG=0,C_S_CONFIG_SYNC_MODE=0,C_S_CONFIG_TDATA_WIDTH=" & 
+"1,C_HAS_M_DATA=1,C_M_DATA_TDATA_WIDTH=32,C_M_DATA_HAS_TUSER=0,C_M_DATA_TUSER_WIDTH=1,C_HAS_M_PHASE=1,C_M_PHASE_TDATA_WIDTH=48,C_M_PHASE_HAS_TUSER=0,C_M_PHASE_TUSER_WIDTH=1,C_DEBUG_INTERFACE=0,C_CHAN_WIDTH=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_MODE : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
@@ -182,11 +182,11 @@ ARCHITECTURE design_1_dds_compiler_0_0_arch OF design_1_dds_compiler_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_phase_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_PHASE TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_phase_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_PHASE TVALID";
   ATTRIBUTE X_INTERFACE_MODE OF m_axis_phase_tvalid: SIGNAL IS "master M_AXIS_PHASE";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_phase_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_PHASE, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 50000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {re" & 
-"solve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 32} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}" & 
-"} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_phase_out {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_out} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate depen" & 
-"dency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency phase_fractwidth format long minimum {} maximum {}} value 32} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}" & 
-"}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type gene" & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_phase_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_PHASE, TDATA_NUM_BYTES 6, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 50000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {re" & 
+"solve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 48} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}" & 
+"} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_phase_out {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_out} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate depen" & 
+"dency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency phase_fractwidth format long minimum {} maximum {}} value 48} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}" & 
+"}}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type gene" & 
 "rated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} va" & 
 "lue false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated " & 
 "dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
@@ -196,7 +196,7 @@ BEGIN
       C_XDEVICEFAMILY => "zynq",
       C_MODE_OF_OPERATION => 0,
       C_MODULUS => 9,
-      C_ACCUMULATOR_WIDTH => 32,
+      C_ACCUMULATOR_WIDTH => 48,
       C_CHANNELS => 1,
       C_HAS_PHASE_OUT => 1,
       C_HAS_PHASEGEN => 1,
@@ -212,7 +212,7 @@ BEGIN
       C_OUTPUT_WIDTH => 12,
       C_PHASE_ANGLE_WIDTH => 12,
       C_PHASE_INCREMENT => 2,
-      C_PHASE_INCREMENT_VALUE => "00011001100110011001100110011010,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      C_PHASE_INCREMENT_VALUE => "000110011001100110011001100110011001100110011010,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
       C_RESYNC => 0,
       C_PHASE_OFFSET => 0,
       C_PHASE_OFFSET_VALUE => "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -236,7 +236,7 @@ BEGIN
       C_M_DATA_HAS_TUSER => 0,
       C_M_DATA_TUSER_WIDTH => 1,
       C_HAS_M_PHASE => 1,
-      C_M_PHASE_TDATA_WIDTH => 32,
+      C_M_PHASE_TDATA_WIDTH => 48,
       C_M_PHASE_HAS_TUSER => 0,
       C_M_PHASE_TUSER_WIDTH => 1,
       C_DEBUG_INTERFACE => 0,

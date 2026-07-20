@@ -49,6 +49,9 @@ static XScuGic   GicInst;
 
 volatile dma_state_t dma_state = DMA_IDLE;
 
+uint32_t *const dma_buffer = DMA_BUFFER_ADDR;
+uint32_t captureLenght = BASE_CAPTURE_LENGTH;
+
 /**
  * Инициализирует AXI DMA и настраивает прерывание S2MM.
  * Проверяет, что ядро DMA в simple-mode (не Scatter-Gather).
@@ -139,12 +142,17 @@ int dma_init(void)
     return XST_SUCCESS;
 }
 
+void dma_irq_reconnect(void)
+{
+    XScuGic_Connect(&GicInst, DMA_GIC_INTR_ID, (Xil_InterruptHandler)dma_irq_handler,  &AxiDma);
+    XScuGic_Enable(&GicInst, DMA_GIC_INTR_ID);
+}
 /**
  * Запустить передачу данных с PL в DDR.
  * Очищает кэш для буфера, сбрасывает флаги и вызывает SimpleTransfer.
  * Возвращает XST_SUCCESS или код ошибки из драйвера.
  */
-int dma_start(uint32_t *buffer, uint32_t length_words)
+int dma_start(void)
 {
     if (dma_state != DMA_IDLE) {
         xil_printf("DMA is not ready for start!\r\n");
@@ -154,11 +162,11 @@ int dma_start(uint32_t *buffer, uint32_t length_words)
     dma_state = DMA_BUSY;
 
     /* Сброс кэша перед записью в память DMA */
-    Xil_DCacheFlushRange((UINTPTR)buffer, length_words * sizeof(uint32_t));
+    Xil_DCacheFlushRange((UINTPTR)dma_buffer, captureLenght * sizeof(uint32_t));
 
     /* Запустить простую передачу (S2MM) */
-    int status = XAxiDma_SimpleTransfer(&AxiDma, (UINTPTR)buffer,
-                                        length_words * sizeof(uint32_t),
+    int status = XAxiDma_SimpleTransfer(&AxiDma, (UINTPTR)dma_buffer,
+                                        captureLenght * sizeof(uint32_t),
                                         XAXIDMA_DEVICE_TO_DMA);
     if (status != XST_SUCCESS) {
         xil_printf("XAxiDma_SimpleTransfer error: %d\r\n", status);
@@ -259,20 +267,20 @@ void dma_test(void)
     xil_printf("PEND0 = %08X\r\n", pend0);
 }
 
-void dma_handle_data(uint32_t *dma_buffer, uint32_t len)
+void dma_handle_data(void)
 {
     if (dma_state != DMA_DONE) {
         xil_printf("DMA is not ready for handling data!\r\n");
         return;        
     }
 
-    Xil_DCacheInvalidateRange((UINTPTR) dma_buffer, len);
+    Xil_DCacheInvalidateRange((UINTPTR) dma_buffer, captureLenght * sizeof(uint32_t));
 
-    // Вывести первые 16 слов результата
-    xil_printf("Data[0..16]: ");
-    for (int i = 0; i < 16; i++)
-        xil_printf("%08X ", dma_buffer[i + 65565]);
-    xil_printf("\r\n");
+    // // Вывести первые 16 слов результата
+    // xil_printf("Data[0..16]: ");
+    // for (int i = 0; i < 16; i++)
+    //     xil_printf("%08X ", dma_buffer[i + 65565]);
+    // xil_printf("\r\n");
 
     dma_state = DMA_IDLE;
 }

@@ -24,6 +24,10 @@
 
 #define DMA_INSTANCE 0
 
+#define DMA_BUFFER_ADDR  ((uint32_t *)0x02100000)
+
+#define BASE_CAPTURE_LENGTH 500000  // число 32-битных слов
+
 typedef enum {
     DMA_IDLE = 0,
     DMA_BUSY,
@@ -33,9 +37,10 @@ typedef enum {
 
 /* Инициализировать DMA и прерывания (XScuGic) */
 int dma_init(void);
+void dma_irq_reconnect(void);
 
 /* Запустить передачу: buffer — адрес буфера (word32), length_words — длина в словах */
-int dma_start(uint32_t *buffer, uint32_t length_words);
+int dma_start();
 
 /* Ожидание завершения передачи (polling) */
 int dma_wait(void);
@@ -54,6 +59,6 @@ int dma_reset(void);
 
 void dma_test(void);
 
-void dma_handle_data(uint32_t *dma_buffer, uint32_t len);
+void dma_handle_data(void);
 
 #endif /* DMA_H */

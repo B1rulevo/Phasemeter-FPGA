@@ -4,17 +4,18 @@
 #include "main.h"
 #include "my_gpio.h"
 #include "dma_p.h"
-//#include "tcp_server.h"
+#include "tcp_server.h"
 
 #include <stdint.h>
 
-uint32_t *const dma_buffer = DMA_BUFFER_ADDR;
+PhasemeterState_t deviceState = STATE_DISCONNECTED;
 
 int main(void)
 {
     dma_init();
     initGPIO();
-    //tcp_server_init();
+    tcp_server_init();
+    dma_irq_reconnect();
 
     offLED();
 
@@ -22,17 +23,18 @@ int main(void)
 
         if (dma_get_state() == DMA_IDLE) {
             offLED();
-            dma_start(dma_buffer, CAPTURE_LENGTH);
+            dma_start();
             pulseSoftTrig();
-            xil_printf("Software triggered!\r\n");
+            // xil_printf("Software triggered!\r\n");
         }
 
         if (dma_get_state() == DMA_DONE) {
-            dma_handle_data(dma_buffer, CAPTURE_LENGTH * sizeof(uint32_t));
+            deviceState = STATE_DATARDY;
+            dma_handle_data();
             onLED();
         }
 
-        //tcp_server_handle();
+        tcp_server_handle();
     }
 
     return 0;

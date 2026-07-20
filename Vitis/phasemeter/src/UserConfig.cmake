@@ -30,6 +30,8 @@ set(USER_COMPILE_SOURCES
 "dma_p.c"
 "main.c"
 "my_gpio.c"
+"tcp_server.c"
+"tcp_interface.c"
 )
 
 # -----------------------------------------

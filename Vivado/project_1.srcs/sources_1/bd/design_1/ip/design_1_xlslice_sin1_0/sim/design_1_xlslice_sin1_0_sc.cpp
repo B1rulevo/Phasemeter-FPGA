@@ -62,8 +62,8 @@ design_1_xlslice_sin1_0_sc::design_1_xlslice_sin1_0_sc(const sc_core::sc_module_
   // initialize module
     xsc::common_cpp::properties model_param_props;
     model_param_props.addLong("DIN_WIDTH", "32");
-    model_param_props.addLong("DIN_FROM", "24");
-    model_param_props.addLong("DIN_TO", "11");
+    model_param_props.addLong("DIN_FROM", "23");
+    model_param_props.addLong("DIN_TO", "10");
     model_param_props.addString("COMPONENT_NAME", "design_1_xlslice_sin1_0");
 
   mp_impl = new design_1_xlslice_sin1_0_core("inst", model_param_props);

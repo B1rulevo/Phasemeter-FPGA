@@ -1,8 +1,14 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
-#define DMA_BUFFER_ADDR  ((uint32_t *)0x02100000)
-
-#define CAPTURE_LENGTH 500000  // число 32-битных слов
+typedef enum {
+    STATE_DISCONNECTED = 0,
+    STATE_IDLE,
+    STATE_WAITINGTRIG,
+    STATE_ACQUISITION,
+    STATE_DATARDY,
+    STATE_DATATRANS,
+    STATE_ERROR,
+} PhasemeterState_t;
 
 #endif /*__MAIN_H*/
