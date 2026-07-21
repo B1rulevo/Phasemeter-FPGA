@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
--- Date        : Thu Jul 16 13:59:16 2026
+-- Date        : Tue Jul 21 12:57:14 2026
 -- Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_axis_capture_control_0_0/design_1_axis_capture_control_0_0_stub.vhdl
@@ -17,6 +17,7 @@ entity design_1_axis_capture_control_0_0 is
   Port ( 
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
+    sample_count : in STD_LOGIC_VECTOR ( 31 downto 0 );
     trigger_async : in STD_LOGIC;
     capture_done : out STD_LOGIC;
     busy : out STD_LOGIC;
@@ -34,7 +35,7 @@ entity design_1_axis_capture_control_0_0 is
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of design_1_axis_capture_control_0_0 : entity is "design_1_axis_capture_control_0_0,axis_capture_controller,{}";
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1_axis_capture_control_0_0 : entity is "design_1_axis_capture_control_0_0,axis_capture_controller,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_capture_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=32,CAPTURE_LENGTH=500000}";
+  attribute CORE_GENERATION_INFO of design_1_axis_capture_control_0_0 : entity is "design_1_axis_capture_control_0_0,axis_capture_controller,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_capture_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=32}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of design_1_axis_capture_control_0_0 : entity is "yes";
   attribute IP_DEFINITION_SOURCE : string;
@@ -45,7 +46,7 @@ architecture stub of design_1_axis_capture_control_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,trigger_async,capture_done,busy,capture_enable,s_axis_tdata[31:0],s_axis_tvalid,s_axis_tready,m_axis_tdata[31:0],m_axis_tvalid,m_axis_tready,m_axis_tlast,m_axis_tkeep[3:0]";
+  attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,sample_count[31:0],trigger_async,capture_done,busy,capture_enable,s_axis_tdata[31:0],s_axis_tvalid,s_axis_tready,m_axis_tdata[31:0],m_axis_tvalid,m_axis_tready,m_axis_tlast,m_axis_tkeep[3:0]";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of aclk : signal is "xilinx.com:signal:clock:1.0 aclk CLK";
   attribute X_INTERFACE_MODE : string;

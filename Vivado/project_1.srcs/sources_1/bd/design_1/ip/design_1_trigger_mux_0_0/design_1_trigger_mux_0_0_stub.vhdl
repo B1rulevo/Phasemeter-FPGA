@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
--- Date        : Thu Jul 16 13:59:15 2026
+-- Date        : Tue Jul 21 12:10:03 2026
 -- Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_trigger_mux_0_0/design_1_trigger_mux_0_0_stub.vhdl
@@ -17,6 +17,7 @@ entity design_1_trigger_mux_0_0 is
   Port ( 
     clk : in STD_LOGIC;
     rst : in STD_LOGIC;
+    gate : in STD_LOGIC;
     trigger_select : in STD_LOGIC;
     ext_trigger : in STD_LOGIC;
     sw_trigger : in STD_LOGIC;
@@ -37,7 +38,7 @@ architecture stub of design_1_trigger_mux_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,rst,trigger_select,ext_trigger,sw_trigger,trigger_pulse";
+  attribute black_box_pad_pin of stub : architecture is "clk,rst,gate,trigger_select,ext_trigger,sw_trigger,trigger_pulse";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_MODE : string;

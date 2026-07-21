@@ -20,10 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module capture_controller #(parameter integer CAPTURE_LENGTH = 500000)
+module capture_controller //#(parameter integer CAPTURE_LENGTH = 500000)
 (
     input  wire clk,
     input  wire rst,
+    
+    // Количество измерений
+    input  wire [31:0] sample_count,
 
     // Асинхронный внешний триггер
     input  wire trigger_async,
@@ -134,7 +137,8 @@ module capture_controller #(parameter integer CAPTURE_LENGTH = 500000)
                     sample_counter <= sample_counter + 1'b1;
 
                     // Последний отсчёт
-                    if(sample_counter == CAPTURE_LENGTH-2)
+                    //if(sample_counter == CAPTURE_LENGTH-2)
+                    if(sample_counter == sample_count-2)
                     begin
 
                         last_sample    <= 1'b1;

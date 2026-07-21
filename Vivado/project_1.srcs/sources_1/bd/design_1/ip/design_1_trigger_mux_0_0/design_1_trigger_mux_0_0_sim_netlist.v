@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-// Date        : Thu Jul 16 13:59:15 2026
+// Date        : Tue Jul 21 12:10:03 2026
 // Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_trigger_mux_0_0/design_1_trigger_mux_0_0_sim_netlist.v
@@ -19,12 +19,14 @@
 module design_1_trigger_mux_0_0
    (clk,
     rst,
+    gate,
     trigger_select,
     ext_trigger,
     sw_trigger,
     trigger_pulse);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 50000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
+  input gate;
   input trigger_select;
   input ext_trigger;
   input sw_trigger;
@@ -32,6 +34,7 @@ module design_1_trigger_mux_0_0
 
   wire clk;
   wire ext_trigger;
+  wire gate;
   wire rst;
   wire sw_trigger;
   wire trigger_pulse;
@@ -40,6 +43,7 @@ module design_1_trigger_mux_0_0
   design_1_trigger_mux_0_0_trigger_mux inst
        (.clk(clk),
         .ext_trigger(ext_trigger),
+        .gate(gate),
         .rst(rst),
         .sw_trigger(sw_trigger),
         .trigger_pulse(trigger_pulse),
@@ -49,15 +53,17 @@ endmodule
 (* ORIG_REF_NAME = "trigger_mux" *) 
 module design_1_trigger_mux_0_0_trigger_mux
    (trigger_pulse,
+    gate,
+    clk,
     rst,
     ext_trigger,
-    clk,
     sw_trigger,
     trigger_select);
   output trigger_pulse;
+  input gate;
+  input clk;
   input rst;
   input ext_trigger;
-  input clk;
   input sw_trigger;
   input trigger_select;
 
@@ -65,6 +71,9 @@ module design_1_trigger_mux_0_0_trigger_mux
   wire ext_ff1;
   wire ext_ff2;
   wire ext_trigger;
+  wire gate;
+  wire gate_ff1;
+  wire gate_ff2;
   wire rst;
   wire sw_ff1;
   wire sw_ff2;
@@ -84,6 +93,18 @@ module design_1_trigger_mux_0_0_trigger_mux
         .D(ext_ff1),
         .Q(ext_ff2),
         .R(rst));
+  FDRE gate_ff1_reg
+       (.C(clk),
+        .CE(1'b1),
+        .D(gate),
+        .Q(gate_ff1),
+        .R(1'b0));
+  FDRE gate_ff2_reg
+       (.C(clk),
+        .CE(1'b1),
+        .D(gate_ff1),
+        .Q(gate_ff2),
+        .R(1'b0));
   FDRE sw_ff1_reg
        (.C(clk),
         .CE(1'b1),
@@ -96,14 +117,15 @@ module design_1_trigger_mux_0_0_trigger_mux
         .D(sw_ff1),
         .Q(sw_ff2),
         .R(rst));
-  LUT5 #(
-    .INIT(32'h20202F20)) 
+  LUT6 #(
+    .INIT(64'h04F4040400000000)) 
     trigger_pulse_INST_0
-       (.I0(sw_ff1),
-        .I1(sw_ff2),
+       (.I0(ext_ff2),
+        .I1(ext_ff1),
         .I2(trigger_select),
-        .I3(ext_ff1),
-        .I4(ext_ff2),
+        .I3(sw_ff2),
+        .I4(sw_ff1),
+        .I5(gate_ff2),
         .O(trigger_pulse));
 endmodule
 `ifndef GLBL

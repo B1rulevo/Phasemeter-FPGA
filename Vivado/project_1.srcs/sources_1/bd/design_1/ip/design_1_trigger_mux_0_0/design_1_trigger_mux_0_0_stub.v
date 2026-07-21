@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-// Date        : Thu Jul 16 13:59:15 2026
+// Date        : Tue Jul 21 12:10:03 2026
 // Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_trigger_mux_0_0/design_1_trigger_mux_0_0_stub.v
@@ -16,12 +16,13 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* CHECK_LICENSE_TYPE = "design_1_trigger_mux_0_0,trigger_mux,{}" *) (* CORE_GENERATION_INFO = "design_1_trigger_mux_0_0,trigger_mux,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=trigger_mux,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
 (* IP_DEFINITION_SOURCE = "module_ref" *) (* X_CORE_INFO = "trigger_mux,Vivado 2024.2" *) 
-module design_1_trigger_mux_0_0(clk, rst, trigger_select, ext_trigger, 
+module design_1_trigger_mux_0_0(clk, rst, gate, trigger_select, ext_trigger, 
   sw_trigger, trigger_pulse)
-/* synthesis syn_black_box black_box_pad_pin="rst,trigger_select,ext_trigger,sw_trigger,trigger_pulse" */
+/* synthesis syn_black_box black_box_pad_pin="rst,gate,trigger_select,ext_trigger,sw_trigger,trigger_pulse" */
 /* synthesis syn_force_seq_prim="clk" */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 50000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk /* synthesis syn_isclock = 1 */;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
+  input gate;
   input trigger_select;
   input ext_trigger;
   input sw_trigger;

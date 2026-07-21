@@ -38,6 +38,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "rst": [ { "direction": "in" } ],
+        "gate": [ { "direction": "in" } ],
         "trigger_select": [ { "direction": "in" } ],
         "ext_trigger": [ { "direction": "in" } ],
         "sw_trigger": [ { "direction": "in" } ],

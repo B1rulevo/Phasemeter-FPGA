@@ -52,12 +52,13 @@
 
 (* X_CORE_INFO = "axis_capture_controller,Vivado 2024.2" *)
 (* CHECK_LICENSE_TYPE = "design_1_axis_capture_control_0_0,axis_capture_controller,{}" *)
-(* CORE_GENERATION_INFO = "design_1_axis_capture_control_0_0,axis_capture_controller,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_capture_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=32,CAPTURE_LENGTH=500000}" *)
+(* CORE_GENERATION_INFO = "design_1_axis_capture_control_0_0,axis_capture_controller,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axis_capture_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=32}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_axis_capture_control_0_0 (
   aclk,
   aresetn,
+  sample_count,
   trigger_async,
   capture_done,
   busy,
@@ -80,6 +81,7 @@ input wire aclk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire aresetn;
+input wire [31 : 0] sample_count;
 input wire trigger_async;
 output wire capture_done;
 output wire busy;
@@ -112,11 +114,11 @@ output wire m_axis_tlast;
 output wire [3 : 0] m_axis_tkeep;
 
   axis_capture_controller #(
-    .DATA_WIDTH(32),
-    .CAPTURE_LENGTH(500000)
+    .DATA_WIDTH(32)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),
+    .sample_count(sample_count),
     .trigger_async(trigger_async),
     .capture_done(capture_done),
     .busy(busy),

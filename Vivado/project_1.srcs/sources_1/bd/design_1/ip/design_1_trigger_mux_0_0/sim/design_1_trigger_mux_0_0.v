@@ -57,6 +57,7 @@
 module design_1_trigger_mux_0_0 (
   clk,
   rst,
+  gate,
   trigger_select,
   ext_trigger,
   sw_trigger,
@@ -71,6 +72,7 @@ input wire clk;
 (* X_INTERFACE_MODE = "slave" *)
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire rst;
+input wire gate;
 input wire trigger_select;
 input wire ext_trigger;
 input wire sw_trigger;
@@ -79,6 +81,7 @@ output wire trigger_pulse;
   trigger_mux inst (
     .clk(clk),
     .rst(rst),
+    .gate(gate),
     .trigger_select(trigger_select),
     .ext_trigger(ext_trigger),
     .sw_trigger(sw_trigger),

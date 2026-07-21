@@ -1,131 +1,136 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.833837",
-   "Default View_TopLeft":"4196,1010",
+   "Default View_ScaleFactor":"0.677285",
+   "Default View_TopLeft":"1521,-524",
    "ExpandedHierarchyInLayout":"",
    "PinnedPorts":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
-preplace port FIXED_IO -pg 1 -lvl 23 -x 7680 -y 370 -defaultsOSRD
-preplace port DDR_0 -pg 1 -lvl 23 -x 7680 -y 350 -defaultsOSRD
-preplace port MDIO_ETHERNET_0_0 -pg 1 -lvl 23 -x 7680 -y 280 -defaultsOSRD
-preplace port M_AXIS_DATA_0 -pg 1 -lvl 23 -x 7680 -y -290 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 23 -x 8100 -y 370 -defaultsOSRD
+preplace port DDR_0 -pg 1 -lvl 23 -x 8100 -y 350 -defaultsOSRD
+preplace port MDIO_ETHERNET_0_0 -pg 1 -lvl 23 -x 8100 -y 280 -defaultsOSRD
+preplace port M_AXIS_DATA_0 -pg 1 -lvl 23 -x 8100 -y -290 -defaultsOSRD
 preplace port port-id_ENET0_GMII_RX_CLK_0 -pg 1 -lvl 0 -x -320 -y -70 -defaultsOSRD
 preplace port port-id_ENET0_GMII_TX_CLK_0 -pg 1 -lvl 0 -x -320 -y -10 -defaultsOSRD
 preplace port port-id_ENET0_GMII_RX_DV_0 -pg 1 -lvl 0 -x -320 -y -40 -defaultsOSRD
-preplace port port-id_led_o -pg 1 -lvl 23 -x 7680 -y 580 -defaultsOSRD
+preplace port port-id_led_o -pg 1 -lvl 23 -x 8100 -y 580 -defaultsOSRD
 preplace port port-id_clk_in_0 -pg 1 -lvl 0 -x -320 -y 680 -defaultsOSRD
-preplace port port-id_adc_clk_o_0 -pg 1 -lvl 23 -x 7680 -y 690 -defaultsOSRD
-preplace port port-id_dac_clk_o_0 -pg 1 -lvl 23 -x 7680 -y 1170 -defaultsOSRD
+preplace port port-id_adc_clk_o_0 -pg 1 -lvl 23 -x 8100 -y 690 -defaultsOSRD
+preplace port port-id_dac_clk_o_0 -pg 1 -lvl 23 -x 8100 -y 1170 -defaultsOSRD
 preplace port port-id_trig_i_0 -pg 1 -lvl 0 -x -320 -y 1950 -defaultsOSRD
-preplace portBus ENET0_TXD -pg 1 -lvl 23 -x 7680 -y 100 -defaultsOSRD
+preplace portBus ENET0_TXD -pg 1 -lvl 23 -x 8100 -y 100 -defaultsOSRD
 preplace portBus ENET0_RXD -pg 1 -lvl 0 -x -320 -y 20 -defaultsOSRD
-preplace portBus ENET0_GMII_TX_EN_0 -pg 1 -lvl 23 -x 7680 -y 40 -defaultsOSRD
+preplace portBus ENET0_GMII_TX_EN_0 -pg 1 -lvl 23 -x 8100 -y 40 -defaultsOSRD
 preplace portBus adc_data_i_0 -pg 1 -lvl 0 -x -320 -y 860 -defaultsOSRD
-preplace portBus dac_data_o_0 -pg 1 -lvl 23 -x 7680 -y 1660 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 2 -x 460 -y 290 -defaultsOSRD
+preplace portBus dac_data_o_0 -pg 1 -lvl 23 -x 8100 -y 1660 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 480 -y 290 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 3 -x 970 -y 100 -defaultsOSRD
 preplace inst xlconcat_1 -pg 1 -lvl 3 -x 970 -y 210 -defaultsOSRD -orient R180
-preplace inst leds_0 -pg 1 -lvl 6 -x 1970 -y 580 -defaultsOSRD
+preplace inst leds_0 -pg 1 -lvl 6 -x 2180 -y 580 -defaultsOSRD
 preplace inst adc_sample_0 -pg 1 -lvl 3 -x 970 -y 850 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 22 -x 7560 -y 880 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 460 -y 730 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 22 -x 7990 -y 880 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 480 -y 730 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 1 -x 90 -y 610 -defaultsOSRD
 preplace inst dds_compiler_0 -pg 1 -lvl 3 -x 970 -y 1040 -defaultsOSRD
 preplace inst xlslice_cos -pg 1 -lvl 4 -x 1330 -y 1020 -defaultsOSRD
 preplace inst xlslice_sin -pg 1 -lvl 4 -x 1330 -y 1130 -defaultsOSRD -resize 160 88
-preplace inst mult_gen_I -pg 1 -lvl 7 -x 2230 -y 1230 -defaultsOSRD
-preplace inst mult_gen_Q -pg 1 -lvl 7 -x 2230 -y 1390 -defaultsOSRD -resize 140 116
-preplace inst fir_compiler_I -pg 1 -lvl 9 -x 3000 -y 1250 -defaultsOSRD
-preplace inst cic_compiler_I -pg 1 -lvl 8 -x 2550 -y 1250 -defaultsOSRD
-preplace inst cic_compiler_Q -pg 1 -lvl 8 -x 2550 -y 1430 -defaultsOSRD -resize 300 156
-preplace inst xlconstant_1 -pg 1 -lvl 5 -x 1680 -y 1510 -defaultsOSRD
-preplace inst fir_compiler_Q -pg 1 -lvl 9 -x 3000 -y 1550 -defaultsOSRD -resize 300 156
-preplace inst cordic_0 -pg 1 -lvl 11 -x 3690 -y 1410 -defaultsOSRD
-preplace inst xlconcat_3 -pg 1 -lvl 10 -x 3350 -y 1400 -defaultsOSRD
-preplace inst phase_unwrap_0 -pg 1 -lvl 15 -x 4800 -y 1410 -defaultsOSRD
-preplace inst xlconstant_2 -pg 1 -lvl 14 -x 4500 -y 1260 -defaultsOSRD
-preplace inst xlslice_sin2 -pg 1 -lvl 16 -x 5170 -y 1770 -defaultsOSRD -resize 160 88
-preplace inst axi_dma_0 -pg 1 -lvl 20 -x 6830 -y 1450 -defaultsOSRD
-preplace inst cic_compiler_0 -pg 1 -lvl 16 -x 5170 -y 1380 -defaultsOSRD
-preplace inst axis_capture_control_0 -pg 1 -lvl 18 -x 5750 -y 1430 -defaultsOSRD
-preplace inst trigger_mux_0 -pg 1 -lvl 5 -x 1680 -y 1910 -defaultsOSRD
-preplace inst first_mux -pg 1 -lvl 3 -x 970 -y 1650 -defaultsOSRD
-preplace inst second_trig -pg 1 -lvl 3 -x 970 -y 1800 -defaultsOSRD -resize 160 88
-preplace inst xlconstant_4 -pg 1 -lvl 4 -x 1330 -y 1870 -defaultsOSRD
+preplace inst mult_gen_I -pg 1 -lvl 7 -x 2690 -y 1230 -defaultsOSRD
+preplace inst mult_gen_Q -pg 1 -lvl 7 -x 2690 -y 1390 -defaultsOSRD -resize 140 116
+preplace inst fir_compiler_I -pg 1 -lvl 9 -x 3480 -y 1250 -defaultsOSRD
+preplace inst cic_compiler_I -pg 1 -lvl 8 -x 3050 -y 1250 -defaultsOSRD
+preplace inst cic_compiler_Q -pg 1 -lvl 8 -x 3050 -y 1430 -defaultsOSRD -resize 300 156
+preplace inst xlconstant_1 -pg 1 -lvl 5 -x 1690 -y 1510 -defaultsOSRD
+preplace inst fir_compiler_Q -pg 1 -lvl 9 -x 3480 -y 1550 -defaultsOSRD -resize 300 156
+preplace inst cordic_0 -pg 1 -lvl 11 -x 4120 -y 1410 -defaultsOSRD
+preplace inst xlconcat_3 -pg 1 -lvl 10 -x 3810 -y 1400 -defaultsOSRD
+preplace inst phase_unwrap_0 -pg 1 -lvl 15 -x 5230 -y 1410 -defaultsOSRD
+preplace inst xlconstant_2 -pg 1 -lvl 14 -x 4930 -y 1260 -defaultsOSRD
+preplace inst xlslice_sin2 -pg 1 -lvl 16 -x 5600 -y 1770 -defaultsOSRD -resize 160 88
+preplace inst axi_dma_0 -pg 1 -lvl 20 -x 7260 -y 1450 -defaultsOSRD
+preplace inst cic_compiler_0 -pg 1 -lvl 16 -x 5600 -y 1380 -defaultsOSRD
+preplace inst axis_capture_control_0 -pg 1 -lvl 18 -x 6230 -y 1430 -defaultsOSRD
+preplace inst trigger_mux_0 -pg 1 -lvl 5 -x 1690 -y 1910 -defaultsOSRD
+preplace inst first_mux -pg 1 -lvl 3 -x 970 -y 1630 -defaultsOSRD
+preplace inst second_trig -pg 1 -lvl 3 -x 970 -y 1740 -defaultsOSRD -resize 160 88
+preplace inst xlconstant_4 -pg 1 -lvl 4 -x 1330 -y 1810 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 4 -x 1330 -y 480 -defaultsOSRD
 preplace inst xlconstant_5 -pg 1 -lvl 3 -x 970 -y 520 -defaultsOSRD
-preplace inst smartconnect_0 -pg 1 -lvl 21 -x 7270 -y 1380 -defaultsOSRD
-preplace inst smartconnect_1 -pg 1 -lvl 6 -x 1970 -y -150 -defaultsOSRD
-preplace inst xlconstant_3 -pg 1 -lvl 17 -x 5460 -y 1530 -defaultsOSRD
-preplace inst mult_gen_0 -pg 1 -lvl 12 -x 4040 -y 1410 -defaultsOSRD
-preplace inst xlconstant_6 -pg 1 -lvl 11 -x 3690 -y 1590 -defaultsOSRD -resize 120 88
-preplace inst xlslice_0 -pg 1 -lvl 13 -x 4240 -y 1410 -defaultsOSRD
-preplace inst axis_data_fifo_1 -pg 1 -lvl 19 -x 6250 -y 1460 -defaultsOSRD
-preplace netloc ENET0_GMII_RX_CLK_0_1 1 0 3 NJ -70 N -70 730
-preplace netloc ENET0_GMII_RX_DV_0_1 1 0 3 NJ -40 N -40 720
-preplace netloc ENET0_GMII_TX_CLK_0_1 1 0 3 NJ -10 N -10 740
+preplace inst smartconnect_0 -pg 1 -lvl 21 -x 7700 -y 1380 -defaultsOSRD
+preplace inst smartconnect_1 -pg 1 -lvl 6 -x 2180 -y -150 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 17 -x 5920 -y 1530 -defaultsOSRD
+preplace inst mult_gen_0 -pg 1 -lvl 12 -x 4470 -y 1410 -defaultsOSRD
+preplace inst xlconstant_6 -pg 1 -lvl 11 -x 4120 -y 1590 -defaultsOSRD -resize 120 88
+preplace inst xlslice_0 -pg 1 -lvl 13 -x 4670 -y 1410 -defaultsOSRD
+preplace inst axis_data_fifo_1 -pg 1 -lvl 19 -x 6680 -y 1460 -defaultsOSRD
+preplace inst third_gate -pg 1 -lvl 3 -x 970 -y 1860 -defaultsOSRD -resize 160 88
+preplace inst axi_gpio_0 -pg 1 -lvl 7 -x 2690 -y -350 -defaultsOSRD
+preplace netloc ENET0_GMII_RX_CLK_0_1 1 0 3 NJ -70 N -70 750
+preplace netloc ENET0_GMII_RX_DV_0_1 1 0 3 NJ -40 N -40 740
+preplace netloc ENET0_GMII_TX_CLK_0_1 1 0 3 NJ -10 N -10 760
 preplace netloc In0_0_1 1 0 4 NJ 20 N 20 NJ 20 1140
 preplace netloc adc_data_i_0_1 1 0 3 N 860 N 860 NJ
-preplace netloc adc_sample_0_adc_data_o 1 3 19 NJ 840 NJ 840 NJ 840 2120 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N
-preplace netloc axi_dma_0_s2mm_introut 1 1 20 200 630 NJ 630 NJ 630 NJ 630 1820J 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 N 640 N 640 N 640 N 640 NJ 640 N 640 NJ 640 N 640 7000
-preplace netloc axis_capture_control_0_capture_enable 1 18 5 5890 580 N 580 NJ 580 NJ 580 N
-preplace netloc cic_compiler_0_m_axis_data_tdata 1 8 1 2750 1240n
-preplace netloc cic_compiler_0_m_axis_data_tvalid 1 8 1 2800 1260n
-preplace netloc cic_compiler_1_m_axis_data_tdata 1 8 1 2800 1430n
-preplace netloc cic_compiler_1_m_axis_data_tvalid 1 8 1 2750 1460n
-preplace netloc clk_in_0_1 1 0 6 N 680 180 580 N 580 N 580 N 580 N
-preplace netloc clk_wiz_0_adc_clk_i 1 2 21 760 960 N 960 1540 1210 N 1210 2140 1310 2340 1160 2780 1440 3210 1470 3480 1500 3930 1490 N 1490 N 1490 4650 1500 4990 1470 N 1470 5600 1520 6120 1170 N 1170 N 1170 N 1170 N
+preplace netloc adc_sample_0_adc_data_o 1 3 19 NJ 840 NJ 840 NJ 840 2530 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N 850 N
+preplace netloc axi_dma_0_s2mm_introut 1 1 20 220 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 N 920 N 920 N 920 N 920 NJ 920 N 920 NJ 920 N 920 7430
+preplace netloc axis_capture_control_0_capture_enable 1 18 5 6390 580 N 580 NJ 580 NJ 580 N
+preplace netloc cic_compiler_0_m_axis_data_tdata 1 8 1 3250 1240n
+preplace netloc cic_compiler_0_m_axis_data_tvalid 1 8 1 3280 1260n
+preplace netloc cic_compiler_1_m_axis_data_tdata 1 8 1 3280 1430n
+preplace netloc cic_compiler_1_m_axis_data_tvalid 1 8 1 3250 1460n
+preplace netloc clk_in_0_1 1 0 6 N 680 200 580 N 580 N 580 N 580 N
+preplace netloc clk_wiz_0_adc_clk_i 1 2 21 760 960 N 960 1550 1210 N 1210 2550 1310 2840 1160 3260 1440 3690 1470 3910 1500 4360 1490 N 1490 N 1490 5080 1500 5420 1470 5770 1460 6070 1530 6550 1170 N 1170 N 1170 N 1170 N
 preplace netloc clk_wiz_0_adc_clk_o 1 2 21 800 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N 690 N
-preplace netloc clk_wiz_0_ila_clk 1 2 20 NJ 710 NJ 710 NJ 710 N 710 N 710 NJ 710 NJ 710 NJ 710 NJ 710 NJ 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 7420
-preplace netloc cordic_0_m_axis_dout_tvalid 1 11 4 3940 1500 N 1500 4340 1450 4660
+preplace netloc clk_wiz_0_ila_clk 1 2 20 NJ 710 NJ 710 NJ 710 N 710 N 710 NJ 710 NJ 710 NJ 710 NJ 710 NJ 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 N 710 7850
+preplace netloc cordic_0_m_axis_dout_tvalid 1 11 4 4370 1500 N 1500 4770 1450 5090
 preplace netloc dds_compiler_0_m_axis_data_tdata 1 3 1 1150 1020n
-preplace netloc fir_compiler_I_m_axis_data_tvalid 1 9 2 NJ 1270 3450
-preplace netloc first_mux_Dout 1 3 2 NJ 1650 1530
+preplace netloc fir_compiler_I_m_axis_data_tvalid 1 9 2 NJ 1270 3910
+preplace netloc first_mux_Dout 1 3 2 NJ 1630 1530
 preplace netloc mult_gen_0_P 1 12 1 N 1410
-preplace netloc mult_gen_I_P 1 7 1 2350J 1230n
-preplace netloc mult_gen_Q_P 1 7 1 2320 1390n
-preplace netloc phase_unwrap_0_m_phase 1 15 7 4980 910 N 910 N 910 N 910 N 910 N 910 N
-preplace netloc phase_unwrap_0_m_valid 1 15 1 4940 1390n
-preplace netloc proc_sys_reset_0_interconnect_aresetn 1 4 17 1540 370 1830J 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 N 370 7020
-preplace netloc processing_system7_0_ENET0_GMII_TXD 1 2 1 770J 100n
-preplace netloc processing_system7_0_ENET0_GMII_TX_EN 1 2 21 750J 30 NJ 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 7650
-preplace netloc processing_system7_0_FCLK_CLK0 1 1 20 190 500 730 420 1160 350 N 350 1820 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 N 350 6110 1370 6630 1550 7030
+preplace netloc mult_gen_I_P 1 7 1 2850J 1230n
+preplace netloc mult_gen_Q_P 1 7 1 2830 1390n
+preplace netloc phase_unwrap_0_m_phase 1 15 7 5410 910 N 910 N 910 N 910 N 910 N 910 N
+preplace netloc phase_unwrap_0_m_valid 1 15 1 5370 1390n
+preplace netloc proc_sys_reset_0_interconnect_aresetn 1 4 17 1540 -130 2030J -240 2550 -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 N -180 7450
+preplace netloc processing_system7_0_ENET0_GMII_TXD 1 2 1 790J 100n
+preplace netloc processing_system7_0_ENET0_GMII_TX_EN 1 2 21 770J 30 NJ 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 N 30 8080
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 20 210 500 750 420 1160 -150 N -150 2040 -230 2530 -170 N -170 N -170 N -170 N -170 N -170 N -170 N -170 N -170 N -170 N -170 N -170 6540 1370 7060 1550 7460
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 2 2 NJ 440 1140
 preplace netloc processing_system7_0_GPIO_O 1 2 1 790 320n
-preplace netloc second_trig_Dout 1 3 2 NJ 1800 1510
-preplace netloc trig_i_0_1 1 0 5 NJ 1950 N 1950 N 1950 N 1950 1500
-preplace netloc trigger_mux_0_trigger_pulse 1 5 13 N 1910 2140 1530 NJ 1530 2790J 1450 3200J 1510 NJ 1510 NJ 1510 N 1510 N 1510 N 1510 5000 1480 5340J 1460 N
-preplace netloc util_vector_logic_0_Res 1 16 7 NJ 1770 NJ 1770 NJ 1770 6400 1560 NJ 1560 7470J 1560 7650
+preplace netloc second_trig_Dout 1 3 2 NJ 1740 1510
+preplace netloc trig_i_0_1 1 0 5 NJ 1950 N 1950 N 1950 N 1950 1540
+preplace netloc trigger_mux_0_trigger_pulse 1 5 13 N 1910 2320 1530 NJ 1530 3270J 1450 3680J 1510 NJ 1510 NJ 1510 N 1510 N 1510 N 1510 5430 1480 5780J 1470 N
+preplace netloc util_vector_logic_0_Res 1 16 7 NJ 1770 NJ 1770 NJ 1770 6830 1560 NJ 1560 7900J 1560 8080
 preplace netloc xlconcat_0_dout 1 3 20 NJ 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N
-preplace netloc xlconcat_1_dout 1 2 1 770J 210n
+preplace netloc xlconcat_1_dout 1 2 1 790J 210n
 preplace netloc xlconcat_3_dout 1 10 1 N 1400
 preplace netloc xlconstant_0_dout 1 1 1 170 610n
-preplace netloc xlconstant_1_dout 1 5 3 N 1510 N 1510 2350
-preplace netloc xlconstant_2_dout 1 14 1 4580 1260n
-preplace netloc xlconstant_3_dout 1 4 16 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 6650
-preplace netloc xlconstant_3_dout1 1 17 2 5610 1530 6130
-preplace netloc xlconstant_4_dout 1 4 1 1520 1870n
+preplace netloc xlconstant_1_dout 1 5 3 N 1510 N 1510 2850
+preplace netloc xlconstant_2_dout 1 14 1 5010 1260n
+preplace netloc xlconstant_3_dout 1 4 16 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 N 520 7080
+preplace netloc xlconstant_3_dout1 1 17 2 6050 1540 6560
+preplace netloc xlconstant_4_dout 1 4 1 1520 1810n
 preplace netloc xlconstant_5_dout 1 3 1 N 520
-preplace netloc xlconstant_6_dout 1 11 1 3950 1430n
-preplace netloc xlslice_0_Dout 1 4 3 NJ 1020 NJ 1020 2130
+preplace netloc xlconstant_6_dout 1 11 1 4380 1430n
+preplace netloc xlslice_0_Dout 1 4 3 NJ 1020 NJ 1020 2540
 preplace netloc xlslice_0_Dout1 1 11 1 N 1410
-preplace netloc xlslice_0_Dout2 1 13 2 4340 1440 NJ
-preplace netloc xlslice_1_Dout 1 4 3 NJ 1130 NJ 1130 2110
-preplace netloc xlslice_cos1_Dout 1 9 13 3240 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N
-preplace netloc xlslice_cos2_Dout 1 9 13 3250 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N
-preplace netloc axi_dma_0_M_AXI_S2MM 1 20 1 7010 1360n
-preplace netloc axis_capture_control_0_m_axis 1 18 1 5900 1400n
-preplace netloc axis_data_fifo_1_M_AXIS 1 19 1 6640 1430n
-preplace netloc cic_compiler_0_M_AXIS_DATA 1 16 2 NJ 1370 5540
-preplace netloc processing_system7_0_DDR 1 2 21 NJ 340 NJ 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 7650
-preplace netloc processing_system7_0_FIXED_IO 1 2 21 NJ 360 NJ 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 7650
+preplace netloc xlslice_0_Dout2 1 13 2 4770 1440 NJ
+preplace netloc xlslice_1_Dout 1 4 3 NJ 1130 NJ 1130 2320
+preplace netloc xlslice_cos1_Dout 1 9 13 3700 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N 890 N
+preplace netloc xlslice_cos2_Dout 1 9 13 3710 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N 870 N
+preplace netloc third_gate_Dout 1 3 2 1150J 1870 1500
+preplace netloc axi_gpio_0_gpio_io_o 1 7 11 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 6060
+preplace netloc axi_dma_0_M_AXI_S2MM 1 20 1 7440 1360n
+preplace netloc axis_capture_control_0_m_axis 1 18 1 6400 1400n
+preplace netloc axis_data_fifo_1_M_AXIS 1 19 1 7070 1430n
+preplace netloc cic_compiler_0_M_AXIS_DATA 1 16 2 NJ 1370 6000
+preplace netloc processing_system7_0_DDR 1 2 21 NJ 340 NJ 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 N 340 8080
+preplace netloc processing_system7_0_FIXED_IO 1 2 21 NJ 360 NJ 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 N 360 8080
 preplace netloc processing_system7_0_MDIO_ETHERNET_0 1 2 21 NJ 280 NJ 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N 280 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 2 4 760 -170 NJ -170 N -170 N
-preplace netloc smartconnect_0_M00_AXI 1 1 21 200 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 N 40 N 40 N 40 N 40 NJ 40 N 40 NJ 40 N 40 NJ 40 7410
-preplace netloc smartconnect_1_M00_AXI 1 6 14 NJ -150 NJ -150 NJ -150 NJ -150 NJ -150 NJ -150 N -150 N -150 N -150 N -150 NJ -150 N -150 NJ -150 6660
-levelinfo -pg 1 -320 90 460 970 1330 1680 1970 2230 2550 3000 3350 3690 4040 4240 4500 4800 5170 5460 5750 6250 6830 7270 7560 7680
-pagesize -pg 1 -db -bbox -sgen -540 -520 8150 2840
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 4 780 -170 NJ -170 N -170 N
+preplace netloc smartconnect_0_M00_AXI 1 1 21 220 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 N 40 N 40 N 40 N 40 NJ 40 N 40 NJ 40 N 40 NJ 40 7840
+preplace netloc smartconnect_1_M00_AXI 1 6 14 NJ -160 NJ -160 NJ -160 NJ -160 NJ -160 NJ -160 N -160 N -160 N -160 N -160 NJ -160 N -160 NJ -160 7090
+preplace netloc smartconnect_1_M01_AXI 1 6 1 2320 -370n
+levelinfo -pg 1 -320 90 480 970 1330 1690 2180 2690 3050 3480 3810 4120 4470 4670 4930 5230 5600 5920 6230 6680 7260 7700 7990 8100
+pagesize -pg 1 -db -bbox -sgen -540 -520 8360 2840
 "
 }
 {

@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
--- Date        : Thu Jul 16 13:59:15 2026
+-- Date        : Tue Jul 21 12:10:03 2026
 -- Host        : DESKTOP-DBG01T0 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/FPGA/Phasemeter/Vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_trigger_mux_0_0/design_1_trigger_mux_0_0_sim_netlist.vhdl
@@ -18,9 +18,10 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_1_trigger_mux_0_0_trigger_mux is
   port (
     trigger_pulse : out STD_LOGIC;
+    gate : in STD_LOGIC;
+    clk : in STD_LOGIC;
     rst : in STD_LOGIC;
     ext_trigger : in STD_LOGIC;
-    clk : in STD_LOGIC;
     sw_trigger : in STD_LOGIC;
     trigger_select : in STD_LOGIC
   );
@@ -31,6 +32,8 @@ end design_1_trigger_mux_0_0_trigger_mux;
 architecture STRUCTURE of design_1_trigger_mux_0_0_trigger_mux is
   signal ext_ff1 : STD_LOGIC;
   signal ext_ff2 : STD_LOGIC;
+  signal gate_ff1 : STD_LOGIC;
+  signal gate_ff2 : STD_LOGIC;
   signal sw_ff1 : STD_LOGIC;
   signal sw_ff2 : STD_LOGIC;
 begin
@@ -50,6 +53,22 @@ ext_ff2_reg: unisim.vcomponents.FDRE
       Q => ext_ff2,
       R => rst
     );
+gate_ff1_reg: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => gate,
+      Q => gate_ff1,
+      R => '0'
+    );
+gate_ff2_reg: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => gate_ff1,
+      Q => gate_ff2,
+      R => '0'
+    );
 sw_ff1_reg: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -66,16 +85,17 @@ sw_ff2_reg: unisim.vcomponents.FDRE
       Q => sw_ff2,
       R => rst
     );
-trigger_pulse_INST_0: unisim.vcomponents.LUT5
+trigger_pulse_INST_0: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"20202F20"
+      INIT => X"04F4040400000000"
     )
         port map (
-      I0 => sw_ff1,
-      I1 => sw_ff2,
+      I0 => ext_ff2,
+      I1 => ext_ff1,
       I2 => trigger_select,
-      I3 => ext_ff1,
-      I4 => ext_ff2,
+      I3 => sw_ff2,
+      I4 => sw_ff1,
+      I5 => gate_ff2,
       O => trigger_pulse
     );
 end STRUCTURE;
@@ -87,6 +107,7 @@ entity design_1_trigger_mux_0_0 is
   port (
     clk : in STD_LOGIC;
     rst : in STD_LOGIC;
+    gate : in STD_LOGIC;
     trigger_select : in STD_LOGIC;
     ext_trigger : in STD_LOGIC;
     sw_trigger : in STD_LOGIC;
@@ -119,6 +140,7 @@ inst: entity work.design_1_trigger_mux_0_0_trigger_mux
      port map (
       clk => clk,
       ext_trigger => ext_trigger,
+      gate => gate,
       rst => rst,
       sw_trigger => sw_trigger,
       trigger_pulse => trigger_pulse,

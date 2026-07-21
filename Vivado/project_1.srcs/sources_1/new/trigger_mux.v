@@ -24,6 +24,7 @@ module trigger_mux
 (
     input  wire clk,
     input  wire rst,
+    input  wire gate,
 
     input  wire trigger_select,     // 0 - внешний триггер, 1 - программный триггер
     input  wire ext_trigger,
@@ -59,6 +60,17 @@ module trigger_mux
     assign ext_pulse = ext_ff1 & ~ext_ff2;
 
     //----------------------------------------------------------
+    // Синхронизация разрешающего сигнала
+    //----------------------------------------------------------
+        
+    reg gate_ff1, gate_ff2;
+
+    always @(posedge clk) begin
+        gate_ff1 <= gate;
+        gate_ff2 <= gate_ff1;
+    end
+
+    //----------------------------------------------------------
     // Синхронизация программного триггера
     //----------------------------------------------------------
 
@@ -86,7 +98,11 @@ module trigger_mux
     //----------------------------------------------------------
     // Выбор источника
     //----------------------------------------------------------
+    
+    wire trigger_mux_out;
 
-    assign trigger_pulse = trigger_select ? sw_pulse : ext_pulse;
+    assign trigger_mux_out   = trigger_select ? sw_pulse : ext_pulse;
+
+    assign trigger_pulse = trigger_mux_out & gate_ff2;
 
 endmodule

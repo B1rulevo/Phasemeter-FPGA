@@ -25,11 +25,13 @@
 // FPGA Vivado 2024.2, Verilog-2001.
 
 module axis_capture_controller #(
-    parameter integer DATA_WIDTH     = 32,   // ширина данных в битах
-    parameter integer CAPTURE_LENGTH = 500000  // количество слов захвата
+    parameter integer DATA_WIDTH     = 32   // ширина данных в битах
+    //parameter integer CAPTURE_LENGTH = 500000  // количество слов захвата
 )(
     input  wire                aclk,            // основной такт
     input  wire                aresetn,         // сброс (активный LOW)
+    
+    input  wire [31:0]         sample_count,  // Количество точек
 
     // Асинхронный внешний триггер
     input  wire                trigger_async,
@@ -60,8 +62,9 @@ module axis_capture_controller #(
         ST_CAPTURE = 2'd2,
         ST_DONE    = 2'd3;
 
-    reg [1:0] state;          // текущее состояние FSM
-    reg [31:0] remaining;     // оставшиеся слова до конца захвата
+    reg [1:0]  state;          // текущее состояние FSM
+    reg [31:0] capture_length; // сохранение длины записи
+    reg [31:0]  remaining;     // оставшиеся слова до конца захвата
 
     // Синхронизация внешнего триггера (двухфлиповый синхронизатор)
     reg trig_sync0, trig_sync1;
@@ -119,6 +122,7 @@ module axis_capture_controller #(
                     capture_enable <= 1'b0;
                     // Переход по фронту триггера
                     if (trigger_edge) begin
+                        capture_length <= sample_count; // Сохраняем длину записи
                         state <= ST_ARMED;
                     end
                 end
@@ -129,7 +133,7 @@ module axis_capture_controller #(
                     // Ждём первое слово (s_axis_tready уже =1)
                     if (s_axis_tvalid && s_axis_tready) begin
                         // Приём первого слова
-                        if (CAPTURE_LENGTH == 1) begin
+                        if (capture_length == 1) begin
                             // Захват единственного слова
                             m_valid_reg <= 1'b1;
                             m_data_reg  <= s_axis_tdata;
@@ -141,7 +145,7 @@ module axis_capture_controller #(
                             m_valid_reg <= 1'b1;
                             m_data_reg  <= s_axis_tdata;
                             m_last_reg  <= 1'b0;
-                            remaining   <= CAPTURE_LENGTH - 1;
+                            remaining   <= capture_length - 1;
                             state       <= ST_CAPTURE;
                         end
                     end
